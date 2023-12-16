@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hey, I'm Sandeep</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="/dist/output.css" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="./assets/favicon/icon.svg">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class', /* class/media, here we use class to enable manually dark mode */
+    }
+  </script>
+  <script>
+    /**
+     * Loads the theme stored
+    */
+    if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+  </script>
+</head>
+
+<body class="bg-slate-100 dark:bg-slate-700 relative flex min-h-screen flex-col justify-center">
+
+
+
+
+
+  <nav class="dark:bg-blue-500">
+    <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+      <div class="relative flex h-16 items-center justify-between">
+        <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+          <!-- Mobile menu button -->
+          <button type="button"
+            class="relative inline-flex items-center justify-center p-2 rounded-3xl bg-gray-700 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+            aria-controls="mobile-menu" aria-expanded="false">
+            <span class="absolute -inset-0.5"></span>
+            <span class="sr-only">Open main menu</span>
+            <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+              aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+            </svg>
+            <svg class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+              aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+          <div class="hidden sm:ml-6 sm:block">
+            <div class="flex space-x-2">
+
+              <a href="#"
+                class="text-white hover:bg-black  hover:text-white rounded-full px-3 py-1 text-md font-bold">Home</a>
+              <a href="#about-master"
+                class="text-white hover:bg-black  hover:text-white rounded-full px-3 py-1 text-md font-bold">About</a>
+              <a href="#skills-master"
+                class="text-white hover:bg-black  hover:text-white rounded-full px-3 py-1 text-md font-bold">Skills</a>
+              <a href="#project-master"
+                class="text-white hover:bg-black  hover:text-white rounded-full px-3 py-1 text-md font-bold">Projects</a>
+              <a href="#contacts-master"
+                class="text-white hover:bg-black  hover:text-white rounded-full px-3 py-1 text-md font-bold">Contacts</a>
+            </div>
+          </div>
+        </div>
+        <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+          <h2 class="font-bold mr-16 text-white text-center">Sandeep Sharma</h2>
+          <!-- Profile dropdown -->
+          <div class="relative ml-3">
+            <div>
+              <button type="button" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                <span class="absolute -inset-1.5"></span>
+                <span class="sr-only">Open user menu</span>
+                <img id="profile-img" class="rounded-full"  alt="">
+              </button>
+            </div>
+          </div>
+          <button id="theme-toggle" type="button"
+            class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 bg-slate-800 rounded-full dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 m-4 text-sm p-2.5">
+            <svg id="theme-toggle-dark-icon" class="hidden w-4 h-4" fill="currentColor" viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+            </svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-4 h-4" fill="currentColor" viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                fill-rule="evenodd" clip-rule="evenodd"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <!-- Mobile menu, show/hide based on menu state. -->
+  <div class="sm:hidden bg-black" id="mobile-menu">
+    <div class="space-y-1 px-2 pb-3 pt-2 dark:bg-blue-500">
+      <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+
+      <a href="#"
+        class="text-white hover:bg-gray-700 hover:text-white block rounded-full px-3 py-1 text-base font-medium">Home</a>
+      <a href="#about-master"
+        class="text-white hover:bg-gray-700 hover:text-white block rounded-full px-3 py-1 text-base font-medium">About</a>
+      <a href="#skills-master"
+        class="text-white hover:bg-gray-700 hover:text-white block rounded-full px-3 py-1 text-base font-medium">Skills</a>
+      <a href="#contacts-master"
+        class="text-white hover:bg-gray-700 hover:text-white block rounded-full px-3 py-1 text-base font-medium">Contacts</a>
+      <a href="#project-master"
+        class="text-white hover:bg-gray-700 hover:text-white block rounded-full px-3 py-1 text-base font-medium">Projects</a>
+
+    </div>
+  </div>
+  <script src="script.js"></script>
+
+
+  <!-- container first -->
+
+
+  <div
+    class="container1 dark:bg-slate-800 bg-blue-100 h-screen pt-10 pb-24 md:py-40 mt-1 rounded-lg flex flex-col md:flex-row md:w-full mb-2 sm:h-screen">
+    <!-- notification button -->
+    <div id="notification"></div>
+    <div class="container11 md:w-2/4 py-10 flex justify-center md:justify-end">
+      <img
+        class="profile w-7/12 md:p-0 rounded-full border-white cursor-pointer overflow-hidden duration-500 transition-all hover:scale-105"
+        src="/sandeepsharmacartoon-d29278df.jpg" alt="profile">
+    </div>
+    <div class="container12 md:w-8/12 md:text-left md:mt-32 text-center dark:text-gray-50 text-black ml-4 md:ml-16">
+      <h1 class="frontend text-2xl md:text-3xl font-bold">Hi, I'm <br> <span>SANDEEP.</span><br> A <span
+          class="webtext text-blue-500 text-decoration-none hover:text-blue-700 cursor-pointer"> <a
+            class="text-decoration-none" href="https://en.wikipedia.org/wiki/Web_developer" target="_blank">Frontend
+            Developer.</a></span></h1>
+      <p class="mt-4">
+        This is <strong class="Sandeeptext text-blue-500">Sandeep Kumar Sharma</strong> <br> Web
+        Developer<strong class="Sandeeptext"></strong>, Programmer, Designer living in <br> Greater Noida,
+        looking for the work around <br> the globe.
+      </p>
+      <a class="flex items-center justify-start " href="Sandeep_Sharma_Resume_FINAL.pdf" alt="Sandeep's Resume"
+        target="_blank">
+        <button
+          class="button1 my-4  md:mt-6 hover:bg-blue-400 text-white rounded-full dark:bg-blue-500 px-4 py-2 border-none  cursor-pointer">
+          Download Resume
+        </button>
+      </a>
+      <div class="mt-1 md:mt-6">
+        <ul
+          class=" social-media list-none md:list-unstyled justify-start items-center flex flex-row md:w-2/4 md:mt-3 p-1">
+          <li class="m-3 pr-2 md:pr-6">
+            <a href="https://www.hackerrank.com/sandeepsharma218" target="_blank">
+              <i class="fab fa-hackerrank"></i>
+            </a>
+          </li>
+          <li class="mr-3 pr-2 md:pr-6">
+            <a href="https://www.linkedin.com/in/sandeep-kumar-sharma-9295151a6/" target="_blank">
+              <i class="fab fa-linkedin"></i>
+            </a>
+          </li>
+          <li class="mr-3 pr-2 md:pr-6">
+            <a href="https://www.github.com/sandeepsharma2183" target="_blank">
+              <i class="fab fa-github"></i>
+            </a>
+          </li>
+          <li class="mr-3 pr-2 md:pr-6">
+            <a href="https://www.twitter.com/sharma_sandeep3" target="_blank">
+              <i class="fab fa-twitter"></i>
+            </a>
+          </li>
+          <li class="mr-3 pr-2 md:pr-6">
+            <a href="https://www.instagram.com/sandeepsharma.exe/" target="_blank">
+              <i class="fab fa-instagram"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <img class="w-full md:hidden" src="/file:///home/sandeep/Downloads/dbc8fd71d657a640c3aee9b0cb041838%20(1).svg"
+      alt="">
+  </div>
+
+
+
+
+  <!-- about section -->
+
+  <div id="about-master" class="dark:bg-slate-800 bg-blue-100 h-screen flex justify-center items-center sm:h-screen ">
+    <div>
+
+      <h1 class="text-3xl font-bold text-center py-10 dark:text-gray-50 text-black">About</h1>
+      <div class="about my-1 py-15 flex flex-col md:flex-row items-center justify-center">
+        <div class="imgpic2 cursor-pointer justify-start items-start md:inline-block hidden ">
+          <img class="profilepic2 w-2/5 flex rounded-full justify-end aspect-square"
+            src="/sandeepsharmacartoon-d29278df.jpg" alt="sandeep Profile">
+        </div>
+        <div
+          class="about2 align-right p-8 md:p-16 text-black  dark:bg-slate-700 bg-blue-200 dark:text-gray-50 w-11/12  md:w-2/4 h-fit rounded-2xl">
+          <h1>About</h1>
+          <p>Hi there, I'm <strong class="sandeepabouttext">Sandeep Kumar Sharma,</strong> <br> A
+            Developer from Siwan (Bihar) that is eager to develop convenient and remarkable user experiences
+            that evoke emotions. I enjoy creating things that live on the internet.
+          </p>
+          <img class="sign w-16 mt-4" src="sandeepsign-2117d624.png" alt="signature">
+          <br> <br>
+          <a class="about_button_1 border-none rounded-full px-4 py-3 m-1 dark:bg-blue-500 text-white hover:bg-blue-400"
+            href="#project-master">Projects</a>
+          <a class="about_button_2 border-none rounded-full px-4 py-3 m-1 dark:bg-blue-500 text-white hover:bg-blue-400"
+            href="#contacts-master">Hire me</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- </div> -->
+
+
+  <!-- Education Section -->
+  <div id="education-master"
+    class="education my-1 dark:bg-slate-800 sm:h-screen  bg-blue-100 py-40 flex items-center justify-center h-screen w-full">
+    <div class="container mx-auto px-4 py-8 w-11/12 ">
+      <h1 class="text-3xl font-bold dark:text-gray-50 text-black text-center mb-10">Education</h1>
+      <div class="timeline m-auto">
+        <!-- Education Item 1 - High School -->
+        <div class="relative pl-10 pb-8 ">
+          <div class="border-l-2 border-blue-500 absolute top-0 bottom-0 left-5"></div>
+          <div
+            class="dark:bg-blue-500 text-white rounded-full w-10 h-10 flex items-center justify-center absolute top-0 left-0">
+            <i class="fas fa-graduation-cap"></i>
+          </div>
+          <div class="ml-16">
+            <h3 class="font-bold dark:text-gray-50">High School</h3>
+            <p class="text-gray-800">Imperial Public School, ,Hathwa, Gopalganj (Bihar)</p>
+            <p class="text-sm text-gray-500">Year of Passing: 2017</p>
+          </div>
+        </div>
+        <!-- Education Item 2 - Intermediate/Diploma -->
+        <div class="relative pl-10 pb-8">
+          <div class="border-l-2 border-blue-500 absolute top-0 bottom-0 left-5"></div>
+          <div
+            class="dark:bg-blue-500 text-white rounded-full w-10 h-10 flex items-center justify-center absolute top-0 left-0">
+            <i class="fas fa-graduation-cap"></i>
+          </div>
+          <div class="ml-16">
+            <h3 class="font-bold dark:text-gray-50">Intermediate</h3>
+            <p class="text-gray-800">R.A.S.N.S College Kishanpura, Madarpur, Siwan (Bihar)</p>
+            <p class="text-sm text-gray-500">Year of Passing: 2019</p>
+          </div>
+        </div>
+        <!-- Education Item 3 - Bachelor's Degree -->
+        <div class="relative pl-10 pb-8">
+          <!-- <div class="border-l-2 border-blue-500 absolute top-0 bottom-0 left-5"></div> -->
+          <div
+            class="dark:bg-blue-500 text-white rounded-full w-10 h-10 flex items-center justify-center absolute top-0 left-0">
+            <i class="fas fa-graduation-cap"></i>
+          </div>
+          <div class="ml-16">
+            <h3 class="font-bold dark:text-gray-50">Bachelor's Degree</h3>
+            <p class="text-gray-800">G.L Bajaj Institute of Technology and Management , Greater Noida (UP)
+            </p>
+            <p class="text-sm text-gray-500">Year of Passing: 2024</p>
+          </div>
+        </div>
+        <!-- Add more items for other levels of education if needed -->
+        <!-- For example: Master's Degree, PhD, etc. -->
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+  <div id="skills-master"
+    class="skills py-10 my-2 sm:h-screen flex justify-center dark:text-white items-center dark:bg-slate-800 bg-blue-100">
+    <div>
+
+      <h1 class="projecttext text-center text-black text-3xl dark:text-white py-20 skilltext">Skills</h1>
+      <div class="skills1 flex-wrap align-items-md-center flex items-center justify-center  w-full ">
+        <p
+          class="containerbar dark:bg-slate-700 bg-blue-200 dark:text-gray-50 text-black flex flex-wrap m-4 ml-4 flex-col justify-center items-center w-50 h-50 rounded-3xl hover:shadow-lg ,bg-blue-600 w-52 p-4">
+          <i class="fab fa-html5 fa-5x"></i>
+          <span>HTML5</span>
+        </p>
+        <p
+          class="containerbar dark:bg-slate-700 bg-blue-200 dark:text-gray-50 text-black flex flex-wrap m-4 ml-4 flex-col justify-center items-center w-50 h-50 rounded-3xl hover:shadow-lg ,bg-blue-600 w-52 p-4">
+          <i class="fab fa-css3-alt fa-5x"></i>
+          <span>CSS3</span>
+        </p>
+        <p
+          class="containerbar dark:bg-slate-700 bg-blue-200 dark:text-gray-50 text-black flex flex-wrap m-4 flex-col justify-center items-center w-50 h-50 rounded-3xl hover:shadow-lg ,bg-blue-600 w-52 p-4">
+          <i class="fab fa-tailwind fa-5x"></i>
+          <span>TAILWIND</span>
+        </p>
+        <p
+          class="containerbar dark:bg-slate-700 bg-blue-200 dark:text-gray-50 text-black flex flex-wrap m-4 flex-col justify-center items-center w-50 h-50 rounded-3xl hover:shadow-lg ,bg-blue-600 w-52 p-4">
+          <i class="fab fa-bootstrap fa-5x"></i>
+          <span>BOOTSTRAP</span>
+        </p>
+        <p
+          class="containerbar dark:bg-slate-700 bg-blue-200 dark:text-gray-50 text-black flex flex-wrap m-4 flex-col justify-center items-center w-50 h-50 rounded-3xl hover:shadow-lg ,bg-blue-600 w-52 p-4">
+          <i class="fab fa-js-square fa-5x"></i>
+          <span>JAVASCRIPT</span>
+        </p>
+        <p
+          class="containerbar dark:bg-slate-700 bg-blue-200 dark:text-gray-50 text-black flex flex-wrap m-4 flex-col justify-center items-center w-50 h-50 rounded-3xl hover:shadow-lg ,bg-blue-600 w-52 p-4">
+          <i class="fab fa-react fa-5x"></i>
+          <span>REACT.JS</span>
+        </p>
+        <p
+          class="containerbar dark:bg-slate-700 bg-blue-200 dark:text-gray-50 text-black flex flex-wrap m-4 flex-col justify-center items-center w-50 h-50 rounded-3xl hover:shadow-lg ,bg-blue-600 w-52 p-4">
+          <i class="fab fa-react fa-5x"></i>
+          <span>MATERIAL UI</span>
+        </p>
+        <p
+          class="containerbar dark:bg-slate-700 bg-blue-200 dark:text-gray-50 text-black flex flex-wrap m-4 flex-col justify-center items-center w-50 h-50 rounded-3xl hover:shadow-lg ,bg-blue-600 w-52 p-4">
+          <!-- Add the correct Font Awesome icon for NEXT.JS -->
+          <i class="fab fa-nextjs fa-5x"></i>
+          <span>NEXT.JS</span>
+        </p>
+        <p
+          class="containerbar dark:bg-slate-700 bg-blue-200 dark:text-gray-50 text-black flex flex-wrap m-4 flex-col justify-center items-center w-50 h-50 rounded-3xl hover:shadow-lg ,bg-blue-600 w-52 p-4">
+          <i class="fab fa-git-alt fa-5x"></i>
+          <span>GIT</span>
+        </p>
+        <p
+          class="containerbar dark:bg-slate-700 bg-blue-200 dark:text-gray-50 text-black flex flex-wrap m-4 flex-col justify-center items-center w-50 h-50 rounded-3xl hover:shadow-lg ,bg-blue-600 w-52 p-4">
+          <i class="fab fa-github fa-5x"></i>
+          <span>GITHUB</span>
+        </p>
+        <p
+          class="containerbar dark:bg-slate-700 bg-blue-200 dark:text-gray-50 text-black flex flex-wrap m-4 flex-col justify-center items-center w-50 h-50 rounded-3xl hover:shadow-lg ,bg-blue-600 w-52 p-4">
+          <i class="fas fa-code fa-5x"></i>
+          <span>DATA STRUCTURE</span>
+        </p>
+        <p
+          class="containerbar dark:bg-slate-700 bg-blue-200 dark:text-gray-50 text-black flex flex-wrap m-4 flex-col justify-center items-center w-50 h-50 rounded-3xl hover:shadow-lg ,bg-blue-600 w-52 p-4">
+          <i class="fas fa-desktop fa-5x"></i>
+          <span>OPERATING SYSTEM</span>
+        </p>
+        <p
+          class="containerbar dark:bg-slate-700 bg-blue-200 dark:text-gray-50 text-black flex flex-wrap m-4 flex-col justify-center items-center w-50 h-50 rounded-3xl hover:shadow-lg ,bg-blue-600 w-52 p-4">
+          <i class="fas fa-object-ungroup fa-5x"></i>
+          <span>OOPS</span>
+        </p>
+        <p
+          class="containerbar dark:bg-slate-700 bg-blue-200 dark:text-gray-50 text-black flex flex-wrap m-4 flex-col justify-center items-center w-50 h-50 rounded-3xl hover:shadow-lg ,bg-blue-600 w-52 p-4">
+          <i class="fas fa-database fa-5x"></i>
+          <span>SQL</span>
+        </p>
+        <p
+          class="containerbar dark:bg-slate-700 bg-blue-200 dark:text-gray-50 text-black flex flex-wrap m-4 flex-col justify-center items-center w-50 h-50 rounded-3xl hover:shadow-lg ,bg-blue-600 w-52 p-4">
+          <i class="fas fa-database fa-5x"></i>
+          <span>DBMS</span>
+        </p>
+        <p
+          class="containerbar dark:bg-slate-700 bg-blue-200 dark:text-gray-50 text-black flex flex-wrap m-4 flex-col justify-center items-center w-50 h-50 rounded-3xl hover:shadow-lg ,bg-blue-600 w-52 p-4">
+          <i class="fab fa-linux fa-5x"></i>
+          <span>LINUX</span>
+        </p>
+        <p
+          class="containerbar dark:bg-slate-700 bg-blue-200 dark:text-gray-50 text-black flex flex-wrap m-4 flex-col justify-center items-center w-50 h-50 rounded-3xl hover:shadow-lg ,bg-blue-600 w-52 p-4">
+          <i class="fab fa-figma fa-5x"></i>
+          <span>FIGMA</span>
+        </p>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- BOOTSTRAP FOR CAROUSEL  -->
+  <!-- PROJECT SECTION CAROUSEL -->
+
+
+  <div class="main-project dark:bg-slate-800 bg-blue-100 my-2 py-10  ">
+    <h1 class="text-center text-3xl">Projects</h1>
+    <div id="project-master" class="project-main text-center py-10 sm:flex justify-center items-center flex-row ">
+      <section class="project-section m-5">
+        <div id="project1"
+          class="project w-96 dark:bg-slate-700 text-black bg-blue-200 dark:text-gray-50 p-8 rounded-2xl hover:shadow-lg">
+          <h3 class="project_text text-xl m-2 font-bold">Simple Notes App</h3>
+          <img class="rounded-lg" src="/src/assets/simple-notes.png" alt="">
+          <article class="project_description">A Simple Notes App built with React and Material-UI .
+          </article>
+          <a href="https://google-keep-clone-gules.vercel.app/" target="_blank">
+            <div class="project_buttons pt-5">
+              <button
+                class="project_link src_button dark:bg-blue-500 text-white mr-1 border-none px-4 py-2 rounded-3xl">View
+                Project
+              </button>
+              <button
+                class="project_link copy-link-button dark:bg-blue-500 text-white border-none mr-1 px-4 py-2 rounded-3xl"
+                onclick="copyLink('https://google-keep-clone-gules.vercel.app/')">Copy Link
+              </button>
+          </a>
+        </div>
+      </section>
+
+      <section class="project-section m-5">
+        <div id="project1"
+          class="project w-96  dark:bg-slate-700 text-black bg-blue-200 dark:text-gray-50 p-8 rounded-2xl hover:shadow-lg">
+          <h3 class="project_text text-xl m-2 font-bold">Personal Portfolio Website</h3>
+          <img class="rounded-lg" src="/src/assets/portfolio2.png" alt="">
+          <article class="project_description">A personal portfolio website showcases an individual's work,
+            skills, and achievements.</article>
+          <a href="https://amrahs02.github.io/portfolio/" target="_blank">
+            <div class="project_buttons pt-5">
+              <button
+                class="project_link src_button dark:bg-blue-500 text-white mr-1 border-none px-4 py-2 rounded-3xl">View
+                Project</button>
+              <button
+                class="project_link copy-link-button dark:bg-blue-500 text-white border-none mr-1 px-4 py-2 rounded-3xl"
+                onclick="copyLink('https://amrahs02.github.io/portfolio_modified/')">Copy Link</button>
+          </a>
+
+        </div>
+      </section>
+
+      <section class="project-section m-5">
+        <div id="project1"
+          class="project w-96  dark:bg-slate-700 text-black  bg-blue-200 dark:text-gray-50 p-8 rounded-2xl hover:shadow-lg">
+          <h3 class="project_text text-xl m-2 font-bold">To-Do List in React</h3>
+          <img class="rounded-lg" src="/src/assets/todo.png" alt="">
+          <article class="project_description">A personal portfolio website showcases an individual's work,
+            skills, and achievements.</article>
+          <a href="https://amrahs02.github.io/todo_react/" target="_blank">
+            <div class="project_buttons pt-5">
+              <button
+                class="project_link src_button dark:bg-blue-500 text-white mr-1 border-none px-4 py-2 rounded-3xl">View
+                Project</button>
+              <button
+                class="project_link copy-link-button dark:bg-blue-500 text-white border-none mr-1 px-4 py-2 rounded-3xl"
+                onclick="copyLink('https://amrahs02.github.io/todo_react/')">Copy Link</button>
+          </a>
+        </div>
+      </section>
+    </div>
+  </div>
+
+
+
+
+
+  <!-- project suggestion section  -->
+
+
+
+
+  <div id="contacts-master"
+    class="contacts w-full sm:h-screen dark:bg-slate-800 bg-blue-100 py-10 md:py-20 my-2 px-0 flex flex-col md:flex-row">
+    <div id="#contacts1"
+      class="contacts1 inline-block text-black dark:text-white rounded-lg w-full md:w-1/4 cursor-pointer border-none m-auto text-center py-14 mb-4 md:mb-0">
+      <div>Let's make something new, <br> different and more meaningful <br>
+        or make things more visual <br> or Conceptual ? <strong><a href="mailto:sandeepsharma2183@gmail.com">Just Say
+            Hello!</a></strong>
+      </div>
+      <br>
+      <div>-- +91-822708XXXX </div>
+      <br>
+
+      <div>-- sandeepsharma2183@gmail.com</div>
+      <br>
+
+      <div>-- Siwan, Bihar, India </div>
+      <br>
+      <div class="social-media2 list-none flex justify-center mt-4">
+        <div class="m-2"><a href="https://www.hackerrank.com/amrahs" target="_blank"> <i class="fab fa-hackerrank"> </i>
+          </a></div>
+        <div class="m-2"><a href="https://www.linkedin.com/in/sandeep-kumar-sharma-9295151a6/" target="_blank">
+            <i class="fab fa-linkedin"> </i> </a></div>
+        <div class="m-2"><a href="https://www.github.com/amrahs02" target="_blank"> <i class="fab fa-github">
+            </i> </a></div>
+        <div class="m-2"><a href="https://www.twitter.com/amrahs02" target="_blank"> <i class="fab fa-twitter">
+            </i> </a></div>
+        <div class="m-2"><a href="https://www.instagram.com/sandeepsharma.exe/" target="_blank"> <i
+              class="fab fa-instagram"> </i> </a></div>
+      </div>
+    </div>
+    <div
+      class="contacts2 w-11/12 md:w-4/12 dark:bg-slate-700 bg-blue-200 dark:text-gray-50 text-black cursor-pointer border-none m-auto rounded-2xl py-4 md:py-10 px-0 text-center">
+      <p class="text-xl md:text-3xl mb-2 w-full">Just Say Hello!</p>
+      <form class="w-full">
+        <input
+          class="user-box box rounded-3xl p-2 md:p-3 my-2 w-3/4 border-blue-400 border-2 dark:bg-gray-600 hover:dark:bg-slate-800 bg-blue-100"
+          type="text" id="name" placeholder="Your Name" required>
+        <input
+          class="user-box box rounded-3xl p-2 md:p-3 my-2 w-3/4 border-blue-400  border-2 dark:bg-gray-600 hover:dark:bg-slate-800 bg-blue-100"
+          type="email" id="email" placeholder="Your Email" required>
+        <input
+          class="user-box box rounded-3xl p-2 md:p-3 my-2 w-3/4 border-blue-400  border-2 dark:bg-gray-600 hover:dark:bg-slate-800 bg-blue-100"
+          type="tel" id="phone" placeholder="Your Phone" required>
+        <input
+          class="user-box box rounded-3xl p-2 md:p-3 my-2 w-3/4 border-blue-400  border-2 dark:bg-gray-600 hover:dark:bg-slate-800 bg-blue-100"
+          type="text" id="message" placeholder="Your Suggestion" required>
+        <button onclick="sendMessage()"
+          class="user-box text-white cursor-pointer submit-contact box rounded-3xl p-2 md:p-3 my-2 w-3/4 dark:bg-blue-500 hover:bg-blue-400"
+          type="submit">Send</button>
+      </form>
+      <p id="confirmation-message" class="hidden text-green-600 mt-2">Message sent successfully. Thank you for
+        contacting us!</p>
+    </div>
+
+    <script>
+
+    </script>
+  </div>
+
+
+  <!-- footer section   -->
+
+
+
+  <div id="footer-master"
+    class="footer dark:bg-slate-800 bg-blue-100 dark:text-white text-center mt-2 rounded-lg mb-1 py-5">
+    <p class="text-black dark:text-white">Copyright 2023. All rights Reserved.</p>
+    <p class="text-black dark:text-white">Design and Developed by <strong style="color: #0e4ecf"
+        href="#about-master">Sandeep Kumar
+        Sharma.</strong> </p>
+  </div>
+
+  <!-- notification -->
+  <script src="/notification.js"></script>
+  <script
+    type="text/javascript">window.$crisp = []; window.CRISP_WEBSITE_ID = "9ba99c53-4759-450d-ab6a-1a479f6fb002"; (function () { d = document; s = d.createElement("script"); s.src = "https://client.crisp.chat/l.js"; s.async = 1; d.getElementsByTagName("head")[0].appendChild(s); })();</script>
+
+
+
+
+  <!-- CONTACT FORM END -->
+
+
+
+
+</body>
+
+</html>
